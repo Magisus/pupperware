@@ -9,14 +9,14 @@ which you will run your Puppet Infrastructure.
 
 Once you have Docker Compose installed, you can start the stack with
 ```
-    DNS_ALT_NAMES=puppet,host.exmple.com docker-compose up -d
+    DNS_ALT_NAMES=host.example.com docker-compose up -d
 ```
 
 The value of `DNS_ALT_NAMES` must list all the names, as a comma-separated
 list, under which the Puppet server in the stack can be reached from
-agents. It must include `puppet` as that is used by PuppetDB to communicate
-with the Puppet server. The value of `DNS_ALT_NAMES` only has an effect the
-first time you start the stack, as it is placed into the server's SSL
+agents. It will have `puppet` prepended to it as that name is used by PuppetDB
+to communicate with the Puppet server. The value of `DNS_ALT_NAMES` only has an
+effect the first time you start the stack, as it is placed into the server's SSL
 certificate. If you need to change it after that, you will need to properly
 revoke the server's certificate and restart the stack with the changed
 `DNS_ALT_NAMES` value.
